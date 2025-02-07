@@ -265,12 +265,14 @@ class Car implements ICar{
     }
     
 
-    constructor (mark: string, model: string, year: number, VIN: number, registrationNumber: number){
+    constructor (mark: string, model: string, year: number, VIN: number, registrationNumber: number, carcass: Carcasses, carClass: CarClasses){
         this._mark = mark;
         this._model = model;
         this._year = year;
         this._VIN = VIN;
         this._registrationNumber = registrationNumber;
+        this._carcass = carcass;
+        this._carClass = carClass;
     }
 
     info() : void{
@@ -353,6 +355,15 @@ class Motorbike implements IMotorbike{
     set isSport(isSport:boolean){
         this._isSport = isSport;
     }
+    constructor (mark: string, model: string, year: number, VIN: number, registrationNumber: number, body: string, isSport: boolean){
+        this._mark = mark;
+        this._model = model;
+        this._year = year;
+        this._VIN = VIN;
+        this._registrationNumber = registrationNumber;
+        this._body = body;
+        this._isSport = isSport;
+    }
     info() : void{
         console.log(this._mark);
         console.log(this._model);
@@ -380,6 +391,9 @@ class VehicleStorage<T extends IVehicle> implements IVehicleStorage<T>{
 
     get storage() : Array<T>{
         return this._storage;
+    }
+    constructor (storage: Array<T>){
+        this._storage = storage;
     }
     /** Да, метод является тем же самым, что и выше, но зато по заданию **/
     getVehicles() : Array<T>{
